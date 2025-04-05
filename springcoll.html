@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bloom and Grace | Honey</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&family=Playfair+Display:wght@500&display=swap" rel="stylesheet">
+    <style>
+        /* General Styles */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Playfair Display', serif;
+            color: #C19AAB;
+            text-align: center;
+            overflow-x: hidden;
+            background-color: #f7f7f7;
+        }
+
+        /* Background Image */
+        .background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background-image: url('pringwall.jpg');
+            background-size: cover;
+            background-position: center;
+        }
+
+        /* Floating Petals */
+        .floating-petals {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .petal {
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            background: url('petal.png') no-repeat center/contain;
+            opacity: 0.7;
+            animation: float linear infinite;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(-10%) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
+        }
+
+        /* Title & Slogan */
+        .hero {
+            position: relative;
+            z-index: 2;
+            padding: 100px 10px 20px;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            font-family: 'Dancing Script', cursive;
+            color: #bd3151; /* Soft pink */
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        .slogan { 
+            font-family: 'Lora', serif;
+            font-size: 1.8rem;
+            font-style: italic;
+            color:  #82333b; /* Light grey */
+            margin-bottom: 20px;
+            animation: fadeIn 2s ease-in-out 1s forwards;
+        }
+
+        /* Countdown Timer */
+        .countdown {
+            font-size: 2.5rem;
+            font-weight: bold;
+            background: rgba(237, 210, 210, 0.8);
+            padding: 15px 30px;
+            display: inline-block;
+            border-radius: 15px;
+            margin: 20px 0;
+            animation: fadeIn 2s ease-in-out 1.5s forwards;
+            color: #b46283; /* Darker rose pink */
+        }
+
+        /* Secret Message (Hidden Inside a Flower) */
+        .secret-flower { 
+            font-family: 'Lora', serif;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #6d2439; /* Soft pink */
+            background: rgba(255, 255, 255, 0.8);
+            display: inline-block;
+            padding: 10px 15px;
+            border-radius: 50%;
+            margin: 20px 0;
+        }
+
+        .secret-message {
+            display: none;
+            font-family: 'Lora', serif;
+            font-size: 1.8rem;
+            font-style: italic;
+            margin-top: 20px;
+            color: #7baad1; /* Light grey */
+        }
+
+        /* Collection Section */
+        .collection {
+            padding: 50px 10%;
+        }
+        .piece {
+    display: inline-block;
+    margin: 20px;
+    position: relative;
+    text-align: center;
+    font-family: 'Playfair Display', serif;
+}
+
+.coming-soon {
+    position: relative;
+    display: inline-block;
+    overflow: hidden;
+    border-radius: 15px;
+    padding: 10px;
+    background: url('floral-frame.png') no-repeat center/cover; /* Change this to your floral frame image */
+    transition: all 0.4s ease-in-out;
+}
+
+.coming-soon img {
+    width: 280px;
+    height: auto;
+    filter: brightness(0.95);
+    transition: all 0.5s ease-in-out;
+    border-radius: 12px;
+}
+
+.coming-soon:hover img {
+    filter: brightness(1.1);
+    box-shadow: 0 0 18px rgba(58, 84, 63, 0.5);
+}
+
+/* The Mirror Message Text */
+.mirror-message {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-style: italic;
+    font-size: 1.2rem;
+    color: #2e3a2d;
+    background: rgba(255, 255, 255, 0.75);
+    padding: 8px 14px;
+    border-radius: 10px;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.4s ease;
+    z-index: 2;
+}
+
+/* Reveal on Hover */
+.coming-soon:hover .mirror-message {
+    opacity: 1;
+}
+
+/* Optional: Glow effect on hover */
+.coming-soon:hover {
+    box-shadow: 0 0 25px rgba(46, 72, 58, 0.4);
+}
+
+        .piece {
+    display: inline-block;
+    margin: 20px;
+    position: relative;
+    overflow: hidden;
+}
+
+.piece img {
+    width: 300px;
+    height: auto;
+    border-radius: 15px;
+    border: 8px solid transparent;
+    background: url('floral frame.jpg') no-repeat center/cover;
+    padding: 15px;
+    transition: all 0.5s ease-in-out;
+    filter: brightness(0.95);
+}
+
+.piece:hover img {
+    filter: brightness(1.1);
+    box-shadow: 0 0 20px rgba(104, 85, 85, 0.4);
+}
+
+/* Mirror Message Overlay */
+.mirror-message {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: 'Playfair Display', serif;
+    font-size: 1.4rem;
+    font-style: italic;
+    color: #2e3a2d;
+    background: rgba(255, 255, 255, 0.7);
+    padding: 10px 15px;
+    border-radius: 12px;
+    opacity: 0;
+    transition: opacity 0.4s ease-in-out;
+    pointer-events: none;
+}
+
+.piece:hover .mirror-message {
+    opacity: 1;
+}
+
+        .piece {
+    display: inline-block;
+    margin: 20px;
+    position: relative;
+    overflow: hidden;
+}
+
+.piece img {
+    width: 300px;
+    height: auto;
+    border-radius: 15px;
+    border: 8px solid transparent;
+    background: url('floral frame.jpg') no-repeat center/cover;
+    padding: 15px;
+    transition: all 0.5s ease-in-out;
+    filter: brightness(0.95);
+}
+
+.piece:hover img {
+    filter: brightness(1.1);
+    box-shadow: 0 0 20px rgba(104, 85, 85, 0.4);
+}
+
+/* Mirror Message Overlay */
+.mirror-message {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: 'Playfair Display', serif;
+    font-size: 1.4rem;
+    font-style: italic;
+    color: #2e3a2d;
+    background: rgba(255, 255, 255, 0.7);
+    padding: 10px 15px;
+    border-radius: 12px;
+    opacity: 0;
+    transition: opacity 0.4s ease-in-out;
+    pointer-events: none;
+}
+
+.piece:hover .mirror-message {
+    opacity: 1;
+}
+
+
+        .piece img {
+            width: 300px;
+            height: auto;
+            border-radius: 15px;
+            transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
+            border: 8px solid transparent;
+            background: url('floral frame.jpg') no-repeat center/cover;
+            padding: 15px;
+        }
+
+        .piece img:hover {
+            transform: scale(1.05);
+            opacity: 0.8;
+        }
+
+        .piece h2 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2rem;
+            margin-top: 10px;
+            color: #60a6df; /* Rose pink */
+        }
+
+        /* Instagram Button */
+        .instagram-button {
+            background: #e1a7b5; /* Soft pink */
+            color: white;
+            font-size: 1.5rem;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 30px;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 30px;
+            transition: background 0.3s ease-in-out;
+        }
+
+        .instagram-button:hover {
+            background: #d67a8d; /* Slightly darker pink */
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes float {
+            0% { transform: translateY(-10%) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Background Image -->
+    <div class="background"></div>
+
+    <!-- Floating Petals -->
+    <div class="floating-petals">
+        <div class="petal" style="left: 10%; animation-duration: 10s; animation-delay: 0s;"></div>
+        <div class="petal" style="left: 30%; animation-duration: 12s; animation-delay: 2s;"></div>
+        <div class="petal" style="left: 50%; animation-duration: 14s; animation-delay: 1s;"></div>
+        <div class="petal" style="left: 70%; animation-duration: 9s; animation-delay: 3s;"></div>
+        <div class="petal" style="left: 90%; animation-duration: 16s; animation-delay: 4s;"></div>
+    </div>
+
+    <!-- Hero Section -->
+    <div class="hero">
+        <h1>Bloom and Grace</h1>
+        <p class="slogan">Step into a world where comfort meets grace. The journey begins here.</p>
+    </div>
+
+    <!-- Countdown Timer -->
+    <div class="countdown" id="countdown"></div>
+
+    <!-- Secret Message -->
+
+     <div>
+    <div class="secret-flower" onclick="revealMessage()">🌸 Click to Reveal 🌸</div>
+    <p class="secret-message" id="secretMessage">"Spring has arrived, so has the comfort and elegance you've been waiting for.<br> Welcome to Bloom and Grace—where every piece tells a story of beauty, softness, and timeless charm.<br> Your new favorite loungewear awaits!".</p>
+</div>
+  <!-- Secret Garden Preview (Hidden Until Launch) -->
+<div class="collection" id="collectionPreview">
+    <div class="piece">
+        <div class="coming-soon">
+            <img src="pajama1.jpg" alt="Peony">
+            <div class="mirror-message">Soon, beauty will bloom...</div>
+            <div class="overlay">Coming Soon</div>
+        </div>
+        <h2>Peony</h2>
+    </div>
+    <div class="piece">
+        <div class="coming-soon">
+            <img src="pajama2.jpg" alt="Camellia">
+            <div class="mirror-message">Soon, beauty will bloom...</div>
+            <div class="overlay">Coming Soon</div>
+        </div>
+        <h2>Camellia</h2>
+    </div>
+    
+    <div class="piece">
+        <div class="coming-soon">
+            <img src="dress1.jpg" alt="Cherry Blossom">
+            <div class="mirror-message">Soon, beauty will bloom...</div>
+            <div class="overlay">Coming Soon</div>
+        </div>
+        <h2>Cherry Blossom</h2>
+    </div>
+    <div class="piece">
+        <div class="coming-soon">
+            <img src="dress2.jpg" alt="Sweet Pea">
+            <div class="mirror-message">Soon, beauty will bloom...</div>
+            <div class="overlay">Coming Soon</div>
+        </div>
+        <h2>Sweet Pea</h2>
+    </div>
+    <div class="piece">
+        <div class="coming-soon">
+            <img src="fiercegrace.jpg" alt="Fierce Grace">
+            <div class="mirror-message">Soon, beauty will bloom...</div>
+            <div class="overlay">Coming Soon</div>
+        </div>
+        <h2>Fierce Grace</h2>
+    </div>
+</div>
+
+    <!-- Instagram Button -->
+    <a href="https://www.instagram.com/la.honey8" class="instagram-button" target="_blank">Shop Our Spring Collection 🌸</a>
+
+    <script>
+        function revealMessage() {
+            document.getElementById("secretMessage").style.display = "block";
+        }
+
+        // Countdown Timer
+        function updateCountdown() {
+            const endDate = new Date("April 18, 2025 00:00:00").getTime();
+
+            const now = new Date().getTime();
+            const distance = endDate - now;
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            document.getElementById("countdown").innerHTML = days + "d " + hours + "h "
+                + minutes + "m " + seconds + "s ";
+
+                        // If countdown is over
+                        if (distance < 0) {
+                clearInterval(x);
+                document.getElementById("countdown").innerHTML = "The collection is live!";
+            }
+        }
+
+        setInterval(updateCountdown, 1000);
+    </script>
+    <script>
+        function createPetal() {
+            const petal = document.createElement("div");
+            petal.classList.add("petal");
+    
+            const size = Math.random() * 20 + 20;
+            petal.style.width = `${size}px`;
+            petal.style.height = `${size}px`;
+            petal.style.left = `${Math.random() * 100}%`;
+            petal.style.animationDuration = `${8 + Math.random() * 5}s`;
+            petal.style.opacity = Math.random();
+    
+            document.querySelector(".floating-petals").appendChild(petal);
+    
+            // Remove after animation
+            setTimeout(() => {
+                petal.remove();
+            }, 15000);
+        }
+    
+        // More petals more magic 🌸
+        setInterval(() => {
+            for (let i = 0; i < 4; i++) {
+                createPetal();
+            }
+        }, 300);
+    </script>
+
+    </script>
+
+</body>
+</html>
