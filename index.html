@@ -11,7 +11,7 @@
             margin: 0;
             padding: 0;
             font-family: 'Playfair Display', serif;
-            color: #C19AAB;
+            color: #b17b92;
             text-align: center;
             overflow-x: hidden;
             background-color: #f7f7f7;
@@ -59,11 +59,11 @@
         .hero {
             position: relative;
             z-index: 2;
-            padding: 100px 10px 20px;
+            padding: 70px 10px 20px;
         }
 
         .hero h1 {
-            font-size: 4rem;
+            font-size: 5rem;
             font-family: 'Dancing Script', cursive;
             color: #bd3151; /* Soft pink */
             text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
@@ -72,7 +72,7 @@
 
         .slogan { 
             font-family: 'Lora', serif;
-            font-size: 1.8rem;
+            font-size: 1.5rem;
             font-style: italic;
             color:  #82333b; /* Light grey */
             margin-bottom: 20px;
@@ -97,7 +97,7 @@
             font-family: 'Lora', serif;
             font-size: 1.5rem;
             cursor: pointer;
-            color: #6d2439; /* Soft pink */
+            color: #F6A5B4; /* Soft pink */
             background: rgba(255, 255, 255, 0.8);
             display: inline-block;
             padding: 10px 15px;
@@ -111,7 +111,7 @@
             font-size: 1.8rem;
             font-style: italic;
             margin-top: 20px;
-            color: #7baad1; /* Light grey */
+            color: #546731; /* Light grey */
         }
 
         /* Collection Section */
@@ -120,7 +120,7 @@
         }
         .piece {
     display: inline-block;
-    margin: 20px;
+    margin: 10px;
     position: relative;
     text-align: center;
     font-family: 'Playfair Display', serif;
@@ -131,8 +131,8 @@
     display: inline-block;
     overflow: hidden;
     border-radius: 15px;
-    padding: 10px;
-    background: url('floral-frame.png') no-repeat center/cover; /* Change this to your floral frame image */
+    padding: 20px;
+    background: url('FLORAL FRAME.png') no-repeat center/cover; /* Change this to your floral frame image */
     transition: all 0.4s ease-in-out;
 }
 
@@ -158,7 +158,7 @@
     font-style: italic;
     font-size: 1.2rem;
     color: #2e3a2d;
-    background: rgba(255, 255, 255, 0.75);
+    background: rgba(202, 77, 77, 0.75);
     padding: 8px 14px;
     border-radius: 10px;
     opacity: 0;
@@ -174,7 +174,7 @@
 
 /* Optional: Glow effect on hover */
 .coming-soon:hover {
-    box-shadow: 0 0 25px rgba(46, 72, 58, 0.4);
+    box-shadow: 0 0 25px rgba(51, 84, 66, 0.4);
 }
 
         .piece {
@@ -210,7 +210,7 @@
     font-size: 1.4rem;
     font-style: italic;
     color: #2e3a2d;
-    background: rgba(255, 255, 255, 0.7);
+    background: rgba(206, 90, 90, 0.7);
     padding: 10px 15px;
     border-radius: 12px;
     opacity: 0;
@@ -287,7 +287,7 @@
             font-family: 'Dancing Script', cursive;
             font-size: 2rem;
             margin-top: 10px;
-            color: #60a6df; /* Rose pink */
+            color: #659292; /* Rose pink */
         }
 
         /* Instagram Button */
@@ -337,16 +337,20 @@
     <!-- Hero Section -->
     <div class="hero">
         <h1>Bloom and Grace</h1>
-        <p class="slogan">Step into a world where comfort meets grace. The journey begins here.</p>
+        <p class="slogan">Step into a world where comfort meets grace. <br> The journey begins here.</p>
     </div>
 
     <!-- Countdown Timer -->
     <div class="countdown" id="countdown"></div>
 
+  <!-- Instagram Button -->
+   <div>
+  <a href="https://www.instagram.com/la.honey8" class="instagram-button" target="_blank">Shop Our Spring Collection 🌸</a>
+</div>
     <!-- Secret Message -->
 
      <div>
-    <div class="secret-flower" onclick="revealMessage()">🌸 Click to Reveal 🌸</div>
+    <div class="secret-flower" onclick="revealMessage()">🌸 Reveal 🌸</div>
     <p class="secret-message" id="secretMessage">"Spring has arrived, so has the comfort and elegance you've been waiting for.<br> Welcome to Bloom and Grace—where every piece tells a story of beauty, softness, and timeless charm.<br> Your new favorite loungewear awaits!".</p>
 </div>
   <!-- Secret Garden Preview (Hidden Until Launch) -->
@@ -394,17 +398,16 @@
     </div>
 </div>
 
-    <!-- Instagram Button -->
-    <a href="https://www.instagram.com/la.honey8" class="instagram-button" target="_blank">Shop Our Spring Collection 🌸</a>
+
 
     <script>
-        function revealMessage() {
+        function revealMessage() { 
             document.getElementById("secretMessage").style.display = "block";
         }
 
         // Countdown Timer
         function updateCountdown() {
-            const endDate = new Date("April 18, 2025 00:00:00").getTime();
+            const endDate = new Date("April 21, 2025 00:00:00").getTime();
 
             const now = new Date().getTime();
             const distance = endDate - now;
@@ -446,9 +449,9 @@
             }, 15000);
         }
     
-        // More petals more magic 🌸
+        // More petals more magic 
         setInterval(() => {
-            for (let i = 0; i < 4; i++) {
+            for (let i = 0; i < 2; i++) {
                 createPetal();
             }
         }, 300);
