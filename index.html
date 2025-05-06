@@ -363,15 +363,7 @@
         </div>
         <h2>Peony</h2>
     </div>
-    <div class="piece">
-        <div class="coming-soon">
-            <img src="pajama2.jpg" alt="Camellia">
-            <div class="mirror-message">Soon, beauty will bloom...</div>
-            <div class="overlay">Coming Soon</div>
-        </div>
-        <h2>Camellia</h2>
-    </div>
-    
+
     <div class="piece">
         <div class="coming-soon">
             <img src="dress1.jpg" alt="Cherry Blossom">
@@ -380,14 +372,8 @@
         </div>
         <h2>Cherry Blossom</h2>
     </div>
-    <div class="piece">
-        <div class="coming-soon">
-            <img src="dress2.jpg" alt="Sweet Pea">
-            <div class="mirror-message">Soon, beauty will bloom...</div>
-            <div class="overlay">Coming Soon</div>
-        </div>
-        <h2>Sweet Pea</h2>
-    </div>
+      
+  
     <div class="piece">
         <div class="coming-soon">
             <img src="fiercegrace.jpg" alt="Fierce Grace">
@@ -407,7 +393,7 @@
 
         // Countdown Timer
         function updateCountdown() {
-            const endDate = new Date("April 26, 2025 00:00:00").getTime();
+            const endDate = new Date("May 12, 2025 00:00:00").getTime();
 
             const now = new Date().getTime();
             const distance = endDate - now;
@@ -446,7 +432,7 @@
             // Remove after animation
             setTimeout(() => {
                 petal.remove();
-            }, 15000);
+            }, 1500);
         }
     
         // More petals more magic 
